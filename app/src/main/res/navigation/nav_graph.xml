@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/groceryListsFragment">
+
+    <fragment
+        android:id="@+id/createPasscodeFragment"
+        android:name="com.example.android.shoppinglist.ui.CreatePasscodeFragment"
+        android:label="Create Passcode"
+        tools:layout="@layout/create_passcode_fragment">
+        <action
+            android:id="@+id/action_createPasscodeFragment_to_groceryListsFragment"
+            app:destination="@id/groceryListsFragment"
+            app:popUpTo="@id/createPasscodeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/enterPasscodeFragment"
+        android:name="com.example.android.shoppinglist.ui.EnterPasscodeFragment"
+        android:label="Enter Passcode"
+        tools:layout="@layout/enter_passcode_fragment">
+        <argument
+            android:name="user"
+            app:argType="com.example.android.shoppinglist.models.User" />
+        <action
+            android:id="@+id/action_enterPasscodeFragment_to_groceryListsFragment"
+            app:destination="@id/groceryListsFragment"
+            app:popUpTo="@id/enterPasscodeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+
+        android:id="@+id/groceryListsFragment"
+        android:name="com.example.android.shoppinglist.ui.GroceryListsFragment"
+        android:label="Grocery lists"
+        tools:layout="@layout/grocery_lists_fragment" >
+        <action
+            android:id="@+id/action_groceryListsFragment_to_groceryDetailsFragment"
+            app:destination="@id/groceryDetailsFragment" />
+        <action
+            android:id="@+id/action_groceryListsFragment_to_createPasscodeFragment"
+            app:destination="@id/createPasscodeFragment" />
+        <action
+            android:id="@+id/action_groceryListsFragment_to_enterPasscodeFragment"
+            app:destination="@id/enterPasscodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/groceryDetailsFragment"
+        android:name="com.example.android.shoppinglist.ui.GroceryDetailsFragment"
+        android:label="Grocery Details"
+        tools:layout="@layout/grocery_details_fragment">
+        <argument
+            android:name="groceryList"
+            app:argType="com.example.android.shoppinglist.models.GroceryList" />
+    </fragment>
+</navigation>
